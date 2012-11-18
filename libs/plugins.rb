@@ -55,7 +55,10 @@ class Plugin
     end
   end
 
-  def field(name, params)
+  def field(name, params={})
+    if Hashie::Mash.instance_methods.include? name.to_sym
+      raise ArgumentError, "field \"#{name}\" is reserved."
+    end
     fields[name][:name] = name
     params.each do |k,v|
       fields[name][k] = v
