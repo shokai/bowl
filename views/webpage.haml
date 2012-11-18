@@ -1,0 +1,15 @@
+- content_for :title do
+  = @title
+
+- content_for :head do
+  %script{:type => 'text/javascript', :src => "#{cometio_js}"}
+  :javascript
+    var io = new CometIO().connect();
+    io.on("connect", function(session_id){
+      console.log("connect "+session_id);
+    });
+    io.on("webpage", function(data){
+      location.href = data.url;
+    });
+
+%h1 webpage

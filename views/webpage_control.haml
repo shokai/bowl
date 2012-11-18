@@ -1,0 +1,20 @@
+- content_for :title do
+  = @title
+
+- content_for :head do
+  %script{:type => 'text/javascript', :src => "#{cometio_js}"}
+  :javascript
+    var io = new CometIO().connect();
+    io.on("connect", function(session_id){
+      console.log("connect "+session_id);
+    });
+    $(function(){
+      $("#btn_go").click(function(){
+        var url = $("#url").val();
+        io.push("__fishbowl_plugin_webbrowser", {url: url});
+      });
+    });
+
+%h1 webpage
+%input{:type => "text", :size => 100, :value => "http://shokai.org", :id => "url"}
+%input{:type => "button", :value => "go", :id => "btn_go"}

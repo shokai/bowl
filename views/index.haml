@@ -1,0 +1,14 @@
+- content_for :title do
+  = @title
+
+- content_for :head do
+  :javascript
+    var app_root = "#{app_root}";
+    var omikuji_api = app_root+'/omikuji.json';
+  %script{:type => 'text/javascript', :src => "#{app_root}/js/main.js"}
+
+%div
+  %input{:id => 'start_btn', :type => 'button', :value => 'start'}
+%div
+  %h2 result
+  %ul#results
