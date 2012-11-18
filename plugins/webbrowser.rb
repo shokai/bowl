@@ -3,7 +3,7 @@ data do
   field "url", :type => String
 end
 
-on :call do |data, session_id|
-  puts cmd = "open #{data['url']}"
+call do
+  puts cmd = "open #{url}"
   system cmd
 end

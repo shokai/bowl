@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'event_emitter'
-  
 class Plugin
 
   def self.dir=(dir)
@@ -50,6 +47,14 @@ class Plugin
     instance_eval &block
   end
 
+  def call(&block)
+    raise ArgumentError, 'block not given' unless block_given?
+    this = self
+    CometIO.on "__fishbowl_plugin_#{name}" do |data, session_id|
+      Hashie::Mash.new(data).instance_eval &block
+    end
+  end
+
   def field(name, params)
     fields[name][:name] = name
     params.each do |k,v|
@@ -57,13 +62,4 @@ class Plugin
     end
   end
 
-end
-
-
-if __FILE__ == $0
-  p Plugin.list
-  wb = Plugin.new 'webbrowser'
-  p wb.fields
-
-  wb.emit :call, 'url' => 'http://shokai.org'
 end

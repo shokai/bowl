@@ -4,7 +4,7 @@ data do
   field "voice", :type => String, :default => 'kyoko'
 end
 
-on :call do |data, session_id|
-  puts cmd = "say #{data['speech']} -v #{data['voice']}"
+call do
+  puts cmd = "say #{speech} -v #{voice}"
   system cmd
 end
