@@ -1,7 +1,7 @@
 
 data do
   field "speech", :type => String
-  field "voice", :type => String
+  field "voice", :type => String, :default => 'kyoko'
 end
 
 on :call do |data, session_id|

@@ -30,6 +30,7 @@ class Plugin
     @name = name
     @fields = Hash.new{|h,k|
       h[k] = {
+        :name => nil,
         :index => lambda{ @fields.keys.size }.call,
         :type => String,
         :default => nil,
@@ -42,11 +43,6 @@ class Plugin
     end
     raise IOError, "cannot read plug-in file \"#{name}\"" unless code
     instance_eval code
-    
-    this = self
-    CometIO.on "__fishbowl_plugin_#{name}" do |data, session_id|
-      this.emit(:call, data, session_id)
-    end
   end
 
   def data(&block)
@@ -55,6 +51,7 @@ class Plugin
   end
 
   def field(name, params)
+    fields[name][:name] = name
     params.each do |k,v|
       fields[name][k] = v
     end
