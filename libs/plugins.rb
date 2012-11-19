@@ -51,6 +51,9 @@ class Plugin
     raise ArgumentError, 'block not given' unless block_given?
     this = self
     CometIO.on "plugin_#{name}" do |data, session_id|
+      this.fields.each do |name, field|
+        data[name] = field[:default] if field[:default] and data[name].to_s.empty?
+      end
       Hashie::Mash.new(data).instance_eval &block
     end
   end
