@@ -1,6 +1,6 @@
 
 data do
-  field "speech", :type => String
+  field "speech", :type => String, :default => 'hello'
   field "voice", :type => String, :default => 'kyoko'
 end
 
