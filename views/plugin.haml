@@ -12,11 +12,20 @@
       }
       return _post_data;
     };
-
+    var show_sample_code = function(){
+      var code =
+        ['<scr'+'ipt src="#{fishbowl_js}">',
+         '<script type="text/javascript">',
+         '  fishbowl.plugin("#{@plugin.name}",'+JSON.stringify(post_data())+');',
+         '</scr'+'ipt>'].join("\n");
+      $("#code pre").text(code);
+    };
     $(function(){
       $("#btn_submit").click(function(){
         fishbowl.plugin("#{@plugin.name}", post_data());
       });
+      show_sample_code();
+      $('.field').keyup(show_sample_code);
     });
 
 %ul#fields
@@ -29,4 +38,4 @@
 %h2 code
 %div#code
   %code
-    %pre= plugin_sample_code(@plugin)
+    %pre
