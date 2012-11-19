@@ -1,22 +1,32 @@
 
-var FishBowl = {};
+var fishbowl = new (function(){
+  var self = this;
+  this.io = null;
+  this.load_script_tag = function(url, onload){
+    var script = document.createElement("script");
+    script.src = url;
+    if(typeof onload === "function"){
+      script.onload = onload;
+      script.onreadystatechange = function(){
+        if(readyState=="loaded" || readyState=="complete"){
+          onload();
+        }
+      };
+    }
+    document.body.appendChild(script);
+  };
 
-$(function(){
-  var onloaded = function(){
-    console.log("load");
-      FishBowl.io = new CometIO().connect();
-      FishBowl.io.on("connect", function(session_id){
+  this.init = function(){
+    self.load_script_tag("<%= cometio_js %>", function(){
+      console.log("load");
+      self.io = new CometIO().connect();
+      self.io.on("connect", function(session_id){
         console.log("connect "+session_id);
       });
-  }
+    });
+  };
+})();
 
-  var ele = document.createElement("script");
-  ele.src = "<%= cometio_js %>";
-  ele.onload = onloaded;
-  ele.onreadystatechange = function(){
-    if(this.readyState=="loaded"||this.readyState=="complete"){
-      onloaded();
-    }
-  }
-  document.body.appendChild(ele);
+$(function(){
+  fishbowl.init();
 });

@@ -16,7 +16,7 @@
     $(function(){
       $("#btn_submit").click(function(){
         console.log("submit");
-        FishBowl.io.push("plugin_#{@plugin.name}", post_data());
+        fishbowl.io.push("plugin_#{@plugin.name}", post_data());
       });
 
       $("#call").text( 'io.push("plugin_#{@plugin.name}",'+JSON.stringify(post_data())+');' );
