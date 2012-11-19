@@ -6,7 +6,7 @@ helpers do
       post_data[name] = field[:default]
     end
 
-    ["<script src=\"#{fishbowl_js}\">",
+    ["<script src=\"#{fishbowl_js}\"  type=\"text/javascript\">",
      "<script type=\"text/javascript\">",
      "  fishbowl.plugin(\"#{plugin.name}\", #{post_data.to_json});",
      "</script>"].join("\n")
