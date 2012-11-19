@@ -19,10 +19,10 @@
     $(function(){
       $("#btn_submit").click(function(){
         console.log("submit");
-        io.push("__fishbowl_plugin_#{@plugin.name}", post_data());
+        io.push("plugin_#{@plugin.name}", post_data());
       });
 
-      $("#call").text( 'io.push("__fishbowl_plugin_#{@plugin.name}",'+JSON.stringify(post_data())+');' );
+      $("#call").text( 'io.push("plugin_#{@plugin.name}",'+JSON.stringify(post_data())+');' );
     });
 
 %ul#fields

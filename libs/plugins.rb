@@ -50,7 +50,7 @@ class Plugin
   def call(&block)
     raise ArgumentError, 'block not given' unless block_given?
     this = self
-    CometIO.on "__fishbowl_plugin_#{name}" do |data, session_id|
+    CometIO.on "plugin_#{name}" do |data, session_id|
       Hashie::Mash.new(data).instance_eval &block
     end
   end
