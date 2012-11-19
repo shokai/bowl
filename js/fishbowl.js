@@ -19,10 +19,9 @@ var fishbowl = new (function(){
 
   this.init = function(){
     self.load_script_tag("<%= cometio_js %>", function(){
-      console.log("load");
       self.io = new CometIO().connect();
       self.io.on("connect", function(session_id){
-        console.log("connect "+session_id);
+        console.log("fishbowl connect : "+session_id);
       });
     });
   };
