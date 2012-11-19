@@ -6,9 +6,7 @@
       != yield_content :title
     %link{:rel => "stylesheet", :href => "#{app_root}/main.css", :type => "text/css"}
     %script{:type => "text/javascript", :src => "#{app_root}/js/jquery.js"}
-    %script{:type => "text/javascript", :src => "#{cometio_js}"}
-    :javascript
-      var io = new CometIO().connect();
+    %script{:type => "text/javascript", :src => "#{fishbowl_js}"}
     != yield_content :head
   %body
     %div#content

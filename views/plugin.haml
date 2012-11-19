@@ -3,9 +3,6 @@
 
 - content_for :head do
   :javascript
-    io.on("connect", function(session_id){
-      console.log("connect "+session_id);
-    });
     var post_data = function(){
       _post_data = {};
       var fields = $('.field');
@@ -19,7 +16,7 @@
     $(function(){
       $("#btn_submit").click(function(){
         console.log("submit");
-        io.push("plugin_#{@plugin.name}", post_data());
+        FishBowl.io.push("plugin_#{@plugin.name}", post_data());
       });
 
       $("#call").text( 'io.push("plugin_#{@plugin.name}",'+JSON.stringify(post_data())+');' );
