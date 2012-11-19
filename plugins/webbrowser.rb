@@ -1,6 +1,6 @@
 
 data do
-  field "url", :type => String
+  field "url", :type => String, :default => "http://shokai.org"
 end
 
 call do

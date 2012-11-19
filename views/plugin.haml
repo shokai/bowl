@@ -6,19 +6,23 @@
     io.on("connect", function(session_id){
       console.log("connect "+session_id);
     });
+    var post_data = function(){
+      _post_data = {};
+      var fields = $('.field');
+      for(var i = 0; i < fields.length; i++){
+        var field = fields[i];
+        _post_data[field.name] = field.value;
+      }
+      return _post_data;
+    };
+
     $(function(){
       $("#btn_submit").click(function(){
         console.log("submit");
-        var post_data = {};
-        var fields = $('.field');
-        for(var i = 0; i < fields.length; i++){
-          var field = fields[i];
-          console.log(field);
-          post_data[field.name] = field.value;
-        }
-        console.log(post_data);
-        io.push("__fishbowl_plugin_#{@plugin.name}", post_data);
+        io.push("__fishbowl_plugin_#{@plugin.name}", post_data());
       });
+
+      $("#call").text( 'io.push("__fishbowl_plugin_#{@plugin.name}",'+JSON.stringify(post_data())+');' );
     });
 
 %ul#fields
@@ -28,3 +32,5 @@
       %input{:type => :text, :size => 40, :value => field[:default], :class => "field", :name => field[:name]}
   %li
     %input{:type => :button, :value => "submit", :id => "btn_submit"}
+%h2 code
+%div#call
