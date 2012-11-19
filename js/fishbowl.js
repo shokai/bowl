@@ -2,6 +2,7 @@
 var fishbowl = new (function(){
   var self = this;
   this.io = null;
+
   this.load_script_tag = function(url, onload){
     var script = document.createElement("script");
     script.src = url;
@@ -24,6 +25,10 @@ var fishbowl = new (function(){
         console.log("connect "+session_id);
       });
     });
+  };
+
+  this.plugin = function(name, data){
+    self.io.push("plugin_"+name, data);
   };
 })();
 

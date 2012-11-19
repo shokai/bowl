@@ -16,10 +16,10 @@
     $(function(){
       $("#btn_submit").click(function(){
         console.log("submit");
-        fishbowl.io.push("plugin_#{@plugin.name}", post_data());
+        fishbowl.plugin("#{@plugin.name}", post_data());
       });
 
-      $("#call").text( 'io.push("plugin_#{@plugin.name}",'+JSON.stringify(post_data())+');' );
+      $("#call").text('fishbowl.plugin("#{@plugin.name}", '+JSON.stringify(post_data())+');' );
     });
 
 %ul#fields
