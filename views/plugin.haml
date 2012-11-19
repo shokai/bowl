@@ -17,8 +17,6 @@
       $("#btn_submit").click(function(){
         fishbowl.plugin("#{@plugin.name}", post_data());
       });
-
-      $("#call").text('fishbowl.plugin("#{@plugin.name}", '+JSON.stringify(post_data())+');' );
     });
 
 %ul#fields
@@ -29,4 +27,6 @@
   %li
     %input{:type => :button, :value => "submit", :id => "btn_submit"}
 %h2 code
-%div#call
+%div#code
+  %code
+    %pre= plugin_sample_code(@plugin)
