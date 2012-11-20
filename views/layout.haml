@@ -2,22 +2,30 @@
 %html
   %head
     %meta{"http-equiv" => "Content-Type", :content => "text/html", :charset => "UTF-8"}
-    %title
-      != yield_content :title
+    %title= @title
     %link{:rel => "stylesheet", :href => "#{app_root}/css/bootstrap.min.css", :type => "text/css"}
+    %link{:rel => "stylesheet", :href => "#{app_root}/css/bootstrap-responsive.min.css", :type => "text/css"}
+    %link{:rel => "stylesheet", :href => "#{app_root}/main.css", :type => "text/css"}
     %script{:type => "text/javascript", :src => "#{app_root}/js/jquery.js"}
     %script{:type => "text/javascript", :src => "#{app_root}/js/bootstrap.min.js"}
     %script{:type => "text/javascript", :src => "#{fishbowl_js}"}
     != yield_content :head
   %body
-    %div#content
-      %div#header
-        %h1
-          != yield_content :title
+    %div.navbar.navbar-inverse.navbar-fixed-top
+      %div.navbar-inner
+        %div.container
+          %a.btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".nav-collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href => app_root}= app_name
+          %div.nav-collapse.collapse
+            %ul.nav
+              %li
+                %a.active{:href => app_root} Home
+              %li
+                %a{:href => "#{app_root}/plugins"} Plugins
+    %div.container
+      %h1= @title
       %div#main
         != yield
-      %hr
-      %div#footer
-        source code : 
-        - src_url = "https://github.com/shokai/fishbowl"
-        %a{:href => src_url} #{src_url}

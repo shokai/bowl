@@ -3,7 +3,7 @@ before '/*.json' do
 end
 
 before '/*' do
-  @title = 'fishbowl'
+  @title = 'FishBowl'
 end
 
 get '/' do
@@ -14,6 +14,6 @@ get '/plugin/:name' do
   name = params['name']
   halt 404, "plugin \"#{name}\" not found" unless plugins.has_key? name
   @plugin = plugins[name]
-  @title = "#{@title}/plugin/#{name}"
+  @title = "plugin/#{name}"
   haml :plugin
 end
