@@ -1,11 +1,13 @@
 !!! XHTML
-%html
+%html{:lang => "en"}
   %head
     %meta{"http-equiv" => "Content-Type", :content => "text/html", :charset => "UTF-8"}
+    %meta{:name => "viewport", :content=> "width=device-width, initial-scale=1.0"}
     %title= @title
     %link{:rel => "stylesheet", :href => "#{app_root}/css/bootstrap.min.css", :type => "text/css"}
-    %link{:rel => "stylesheet", :href => "#{app_root}/css/bootstrap-responsive.min.css", :type => "text/css"}
     %link{:rel => "stylesheet", :href => "#{app_root}/main.css", :type => "text/css"}
+    %link{:rel => "stylesheet", :href => "#{app_root}/css/bootstrap-responsive.min.css", :type => "text/css"}
+
   %body
     %div.navbar.navbar-inverse.navbar-fixed-top
       %div.navbar-inner
@@ -22,7 +24,6 @@
               %li
                 %a{:href => "#{app_root}/plugins"} Plugins
     %div.container
-      %h1= @title
       %div#main
         != yield
     %script{:type => "text/javascript", :src => "#{app_root}/js/jquery.js"}

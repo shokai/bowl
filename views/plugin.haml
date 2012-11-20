@@ -1,10 +1,15 @@
-%ul#fields
-  - @plugin.fields.values.sort{|a,b| a[:index] <=> b[:index] }.each do |field|
-    %li
-      #{field[:name]} :
-      %input{:type => :text, :size => 40, :value => field[:default], :class => "field", :name => field[:name]}
-  %li
-    %input{:type => :button, :value => "submit", :id => "btn_submit"}
+%div.hero-unit
+  %h1= @title
+  %p
+    Plugin description Here.
+  %div
+    %ul#fields
+      - @plugin.fields.values.sort{|a,b| a[:index] <=> b[:index] }.each do |field|
+        %li
+          #{field[:name]} :
+          %input{:type => :text, :size => 40, :value => field[:default], :class => "field", :name => field[:name]}
+      %li
+        %button.btn.btn-primary.btn-large#btn_submit Run &raquo;
 %h2 code
 %div#code
   %pre
