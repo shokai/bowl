@@ -1,4 +1,15 @@
-- content_for :head do
+%ul#fields
+  - @plugin.fields.values.sort{|a,b| a[:index] <=> b[:index] }.each do |field|
+    %li
+      #{field[:name]} :
+      %input{:type => :text, :size => 40, :value => field[:default], :class => "field", :name => field[:name]}
+  %li
+    %input{:type => :button, :value => "submit", :id => "btn_submit"}
+%h2 code
+%div#code
+  %pre
+
+- content_for :foot_script do
   :javascript
     var post_data = function(){
       _post_data = {};
@@ -24,15 +35,3 @@
       show_sample_code();
       $('.field').keyup(show_sample_code);
     });
-
-%ul#fields
-  - @plugin.fields.values.sort{|a,b| a[:index] <=> b[:index] }.each do |field|
-    %li
-      #{field[:name]} : 
-      %input{:type => :text, :size => 40, :value => field[:default], :class => "field", :name => field[:name]}
-  %li
-    %input{:type => :button, :value => "submit", :id => "btn_submit"}
-%h2 code
-%div#code
-  %code
-    %pre

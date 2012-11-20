@@ -6,10 +6,6 @@
     %link{:rel => "stylesheet", :href => "#{app_root}/css/bootstrap.min.css", :type => "text/css"}
     %link{:rel => "stylesheet", :href => "#{app_root}/css/bootstrap-responsive.min.css", :type => "text/css"}
     %link{:rel => "stylesheet", :href => "#{app_root}/main.css", :type => "text/css"}
-    %script{:type => "text/javascript", :src => "#{app_root}/js/jquery.js"}
-    %script{:type => "text/javascript", :src => "#{app_root}/js/bootstrap.min.js"}
-    %script{:type => "text/javascript", :src => "#{fishbowl_js}"}
-    != yield_content :head
   %body
     %div.navbar.navbar-inverse.navbar-fixed-top
       %div.navbar-inner
@@ -29,3 +25,7 @@
       %h1= @title
       %div#main
         != yield
+    %script{:type => "text/javascript", :src => "#{app_root}/js/jquery.js"}
+    %script{:type => "text/javascript", :src => "#{app_root}/js/bootstrap.min.js"}
+    %script{:type => "text/javascript", :src => "#{fishbowl_js}"}
+    != yield_content :foot_script

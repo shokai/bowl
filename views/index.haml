@@ -1,5 +1,11 @@
-- content_for :head do
-  :javascript
-    io.on("connect", function(session_id){
-      console.log("connect "+session_id);
-    });
+%ul
+  %li FishBowl is Mac/Linux control pannel via HTTP.
+  %li
+    %a{:href => "https://github.com/shokai/fishbowl"} https://github.com/shokai/fishbowl
+%h2 Install
+%pre
+  \% git clone git://github.com/shokai/fishbowl.git
+  \% cd fishbowl
+  \% gem install bundler
+  \% bundle install
+  \% foreman start
