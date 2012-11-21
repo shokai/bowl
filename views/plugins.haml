@@ -1,0 +1,13 @@
+%div.hero-unit
+  %h1= @title
+  %p= "#{plugins.keys.size} plugins loaded"
+  %ul
+    - plugins.keys.sort.each do |name|
+      - plugin = plugins[name]
+      %li
+        %a{:href => url(plugin)}= plugin.name
+    
+
+%h2 code
+%div#code
+  %pre

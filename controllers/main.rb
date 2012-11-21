@@ -10,6 +10,11 @@ get '/' do
   haml :index
 end
 
+get '/plugins' do
+  @title = "plugins"
+  haml :plugins
+end
+
 get '/plugin/:name' do
   name = params['name']
   halt 404, "plugin \"#{name}\" not found" unless plugins.has_key? name
