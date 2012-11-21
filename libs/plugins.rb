@@ -77,7 +77,13 @@ class Plugin
         next if ['meta','fields'].include? name
         data[name] = this.instance_eval "@#{name}"
       end
-      Hashie::Mash.new(data).instance_eval &block
+      h = Hashie::Mash.new(data)
+      if this.get :callback
+        def h.callback(data)
+          CometIO.push __callback, data if __callback.to_s.size > 0
+        end
+      end
+      h.instance_eval &block
     end
   end
 

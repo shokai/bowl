@@ -12,8 +12,5 @@ end
 set :callback, true
 
 call do
-  res = arduino.instance_eval command
-  if __callback.to_s.size > 0
-    CometIO.push __callback, res
-  end
+  callback arduino.instance_eval command
 end
