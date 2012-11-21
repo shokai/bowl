@@ -29,7 +29,7 @@ var fishbowl = new (function(){
   this.plugin = function(name, data, callback){
     if(typeof callback === "function"){
       var callback_name = "plugin_"+name+'_callback_'+Date.now();
-      self.io.on(callback_name, callback);
+      self.io.once(callback_name, callback);
       data["__callback"] = callback_name;
     }
     self.io.push("plugin_"+name, data);
