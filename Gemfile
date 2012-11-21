@@ -10,3 +10,5 @@ gem 'json'
 gem 'haml'
 gem 'sass'
 gem 'hashie'
+
+gem 'arduino_firmata'

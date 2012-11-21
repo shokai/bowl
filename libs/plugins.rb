@@ -63,6 +63,11 @@ class Plugin
       this.fields.each do |name, field|
         data[name] = field[:default] if field[:default] and data[name].to_s.empty?
       end
+      this.instance_variables.each do |name|
+        name = name.to_s.gsub(/^@/,'')
+        next if ['meta','fields'].include? name
+        data[name] = this.instance_eval "@#{name}"
+      end
       Hashie::Mash.new(data).instance_eval &block
     end
   end
