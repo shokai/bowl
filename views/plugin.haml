@@ -1,7 +1,6 @@
 %div.hero-unit
   %h1= @title
-  %p
-    Plugin description Here.
+  %p= @plugin.meta[:description]
   %div
     %p#fields
       - @plugin.fields.values.sort{|a,b| a[:index] <=> b[:index] }.each do |field|

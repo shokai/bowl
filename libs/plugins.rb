@@ -25,6 +25,7 @@ class Plugin
 
   def initialize(name)
     @name = name
+    @meta = {}
     @fields = Hash.new{|h,k|
       h[k] = {
         :name => nil,
@@ -40,6 +41,14 @@ class Plugin
     end
     raise IOError, "cannot read plug-in file \"#{name}\"" unless code
     instance_eval code
+  end
+
+  def meta(meta=nil)
+    if meta.kind_of? Hash
+      @meta = meta
+    else
+      return @meta
+    end
   end
 
   def data(&block)
