@@ -6,6 +6,7 @@ data do
 end
 
 call do
+  raise ArgumentError, 'invalid URL' unless url =~ Regexp.new("^https?://.+$")
   puts cmd = "open #{url}"
   system cmd
 end
