@@ -36,12 +36,12 @@ class Plugin
         :value => nil
       }
     }
-    code = nil
+    __code = nil
     open(self.class.list[name]) do |f|
-      code = f.read
+      __code = f.read
     end
-    raise IOError, "cannot read plug-in file \"#{name}\"" unless code
-    instance_eval code
+    raise IOError, "cannot read plug-in file \"#{name}\"" unless __code
+    instance_eval __code
   end
 
   def meta(meta=nil)

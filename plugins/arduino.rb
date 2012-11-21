@@ -2,15 +2,15 @@ require 'arduino_firmata'
 
 @arduino = ArduinoFirmata.connect
 
-meta :description => "Arduino Plugin. receive data with fishbowl.io.on(\"plugin_arduino\", callback)",
+meta :description => "Arduino Firmata Plugin. using http://shokai.github.com/arduino_firmata",
      :author      => "Sho Hashimoto <hashimoto@shokai.org>"
 
 data do
-  field "command", :type => String, :default => 'digital_write(13, true)'
+  field "code", :type => String, :default => 'digital_write(13, true)'
 end
 
 set :callback, true
 
 call do
-  callback arduino.instance_eval command
+  callback arduino.instance_eval code
 end
