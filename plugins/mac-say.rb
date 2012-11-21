@@ -1,4 +1,3 @@
-
 meta :description => "/usr/bin/say command wrapper for Mac OSX.",
      :author      => "Sho Hashimoto <hashimoto@shokai.org>"
 
