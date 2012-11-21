@@ -26,6 +26,7 @@ class Plugin
   def initialize(name)
     @name = name
     @meta = {}
+    @options = Hash.new(false)
     @fields = Hash.new{|h,k|
       h[k] = {
         :name => nil,
@@ -49,6 +50,14 @@ class Plugin
     else
       return @meta
     end
+  end
+
+  def set(k,v)
+    @options[k.to_sym] = v
+  end
+
+  def get(k)
+    @options[k.to_sym]
   end
 
   def data(&block)

@@ -5,11 +5,15 @@
     %p#fields
       - @plugin.fields.values.sort{|a,b| a[:index] <=> b[:index] }.each do |field|
         %div
-          %hlabel.text
+          %label.text
             #{field[:name]}
             %input{:type => :text, :size => 40, :value => field[:default], :class => "field", :name => field[:name]}
       %div
         %button.btn.btn-primary.btn-large#btn_submit Run &raquo;
+    - if @plugin.get :callback
+      %p
+        %h2 return value
+        %input#return_value{:type => :text, :readonly => true}
 %h2 code
 %div#code
   %pre
@@ -34,8 +38,15 @@
       $("#code pre").text(code);
     };
     $(function(){
+      var callback = null;
+      if(#{@plugin.get :callback}){
+        callback = function(data){
+          console.log("return : "+data);
+          $("input#return_value").val(data);
+        };
+      }
       $("#btn_submit").click(function(){
-        fishbowl.plugin("#{@plugin.name}", post_data());
+        fishbowl.plugin("#{@plugin.name}", post_data(), callback);
       });
       show_sample_code();
       $('.field').keyup(show_sample_code);

@@ -9,9 +9,11 @@ data do
   field "command", :type => String, :default => 'digital_write(13, true)'
 end
 
+set :callback, true
+
 call do
-  puts command
-  puts arduino
-  puts arduino.version
-  CometIO.push("plugin_#{name}", arduino.instance_eval(command))
+  res = arduino.instance_eval command
+  if __callback.to_s.size > 0
+    CometIO.push __callback, res
+  end
 end
