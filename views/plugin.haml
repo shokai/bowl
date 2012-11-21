@@ -30,11 +30,20 @@
       return _post_data;
     };
     var show_sample_code = function(){
-      var code =
-        ['<scr'+'ipt src="#{fishbowl_js}">',
-         '<script type="text/javascript">',
-         '  fishbowl.plugin("#{@plugin.name}",'+JSON.stringify(post_data())+');',
-         '</scr'+'ipt>'].join("\n");
+      var code = [];
+      code.push('<scr'+'ipt src="#{fishbowl_js}">');
+      code.push('<script type="text/javascript">');
+      if(#{@plugin.get :callback}){
+        code.push('  var callback = function(data){');
+        code.push('    alert(data);');
+        code.push('  };');
+        code.push('  fishbowl.plugin("#{@plugin.name}",'+JSON.stringify(post_data())+', callback);');
+      }
+      else{
+        code.push('  fishbowl.plugin("#{@plugin.name}",'+JSON.stringify(post_data())+');');
+      }
+      code.push('</scr'+'ipt>');
+      code = code.join("\n");
       $("#code pre").text(code);
     };
     $(function(){
