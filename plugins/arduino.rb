@@ -1,5 +1,6 @@
 require 'arduino_firmata'
 
+raise Error, 'Arduino not Attached' if ArduinoFirmata.list.empty?
 @arduino = ArduinoFirmata.connect
 
 meta :description => "Arduino Firmata Plugin. using http://shokai.github.com/arduino_firmata",
