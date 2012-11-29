@@ -1,5 +1,9 @@
-%h1= @title
-%p= "#{plugins.keys.size} plugins loaded"
+%div.hero-unit
+  %h1= @title
+  %p Write Ruby Code, put it into plug-in directory. FishBowl automatically generate sample code and Web UI.
+
+%h2 Enabled Plug-ins
+%p= "#{plugins.keys.size} plug-ins loaded"
 %ul
   - plugins.keys.sort.each do |name|
     - plugin = plugins[name]
@@ -7,3 +11,13 @@
       %legend
         %a{:href => url(plugin)}= plugin.name
       %label= plugin.meta[:description]
+
+%h2 Path
+%ul
+  - Plugin.dirs.each do |d|
+    %li= "#{d}/"
+
+%h2 Make your Plug-in
+%p
+  see
+  %a{:href => "https://github.com/shokai/fishbowl/tree/master/plugins"} samples.

@@ -11,7 +11,7 @@ get '/' do
 end
 
 get '/plugins' do
-  @title = "plugins"
+  @title = "Plug-ins"
   haml :plugins
 end
 
