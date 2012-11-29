@@ -1,20 +1,24 @@
 class Plugin
 
-  def self.dir=(dir)
-    @@dir = dir
+  def self.dirs
+    @@dirs
   end
 
-  def self.dir
-    @@dir ||= File.expand_path '../plugins', File.dirname(__FILE__)
+  def self.dirs
+    @@dirs ||= [File.expand_path('../plugins', File.dirname(__FILE__)),
+                "#{ENV['HOME']}/.fishbowl/plugins"]
   end
 
   def self.list
     @@list ||=
       (
        h = {}
-       Dir.glob(File.expand_path '*.rb', self.dir).each do |rb|
-         name = rb.scan(/([^\/]+)\.rb$/)[0][0]
-         h[name] = rb
+       self.dirs.each do |d|
+         FileUtils.mkdir_p d unless File.exists? d
+         Dir.glob(File.expand_path '*.rb', d).each do |rb|
+           name = rb.scan(/([^\/]+)\.rb$/)[0][0]
+           h[name] = rb
+         end
        end
        h
        )
