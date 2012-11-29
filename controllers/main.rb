@@ -20,5 +20,6 @@ get '/plugin/:name' do
   halt 404, "plugin \"#{name}\" not found" unless plugins.has_key? name
   @plugin = plugins[name]
   @title = "plugin/#{name}"
+  halt 500, "Error : #{@plugin.message} at #{Plugin.list[name]}" if @plugin.kind_of? Error
   haml :plugin
 end

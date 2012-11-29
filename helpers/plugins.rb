@@ -9,6 +9,7 @@ def plugins
          plugins[name] = Plugin.new name
        rescue => e
          STDERR.puts e
+         plugins[name] = e
          next
        end
      end

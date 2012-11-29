@@ -3,14 +3,19 @@
   %p Write Ruby Code, put it into plug-in directory. FishBowl automatically generate sample code and Web UI.
 
 %h2 Enabled Plug-ins
-%p= "#{plugins.keys.size} plug-ins loaded"
+%p= "#{plugins.values.select{|i|i.kind_of? Plugin}.size} plug-ins loaded"
 %ul
   - plugins.keys.sort.each do |name|
     - plugin = plugins[name]
-    %li
-      %legend
-        %a{:href => url(plugin)}= plugin.name
-      %label= plugin.meta[:description]
+    - if plugin.kind_of? Plugin
+      %li
+        %legend
+          %a{:href => url(plugin)}= plugin.name
+        %label= plugin.meta[:description]
+    - elsif plugin.kind_of? Error
+      %li
+        %legend= name
+        %label= "Error!! : #{plugin.message} at #{Plugin.list[name]}"
 
 %h2 Path
 %ul
