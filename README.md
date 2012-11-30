@@ -1,24 +1,20 @@
 # Fishbowl
 
-TODO: Write a gem description
+FishBowl is a Mac/Linux controller for your Application.
+Write Ruby Code, put it into plug-in directory. FishBowl automatically generate sample code and Web UI.
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
+    % gem install fishbowl
 
-    gem 'fishbowl'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install fishbowl
 
 ## Usage
 
-TODO: Write usage instructions here
+    % fishbowl_start -port 8901
+
+=> start server - http://localhost:8901
+
 
 ## Contributing
 
