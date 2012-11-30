@@ -1,14 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
-gem 'foreman'
-gem 'rack'
-gem 'sinatra'
-gem 'thin'
-gem 'sinatra-contrib'
-gem 'sinatra-cometio'
-gem 'json'
-gem 'haml'
-gem 'sass'
-gem 'hashie'
-
-gem 'arduino_firmata'
+# Specify your gem's dependencies in fishbowl.gemspec
+gemspec

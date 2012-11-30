@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'args_parser'
+
+parser = ArgsParser.parse ARGV do
+  arg :port, 'HTTP port', :alias => :p, :default => 8901
+  arg :help, 'show help', :alias => :h
+end
+
+if parser.has_option? :help
+  STDERR.puts parser.help
+  STDERR.puts "e.g.  fishbowl start --port 8901"
+  exit 0
+end
+
+dir = File.expand_path '../lib/fishbowl/app', File.dirname(__FILE__)
+puts "start fishbowl - port:#{parser[:port]}"
+system "cd '#{dir}' && rackup config.ru -p #{parser[:port]}"
+
