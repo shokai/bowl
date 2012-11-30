@@ -27,5 +27,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'sass'
   gem.add_dependency 'hashie'
   gem.add_dependency 'args_parser', '> 0.1.0'
-  gem.add_dependency 'arduino_firmata'
+  gem.add_dependency 'arduino_firmata', '>= 0.1.6'
 end

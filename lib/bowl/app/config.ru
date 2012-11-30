@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'bundler/setup'
 require 'rack'
 require 'sinatra'
 $stdout.sync = true if development?
