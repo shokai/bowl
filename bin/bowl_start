@@ -9,8 +9,12 @@ end
 bin = $0.split('/').last
 
 if parser.has_option? :help
+  STDERR.puts "Bowl - http://github.com/shokai/bowl"
+  STDERR.puts
   STDERR.puts parser.help
-  STDERR.puts "e.g.  #{bin} --port 8901"
+  STDERR.puts
+  STDERR.puts "e.g."
+  STDERR.puts "  % #{bin} --port 8901"
   exit 0
 end
 
