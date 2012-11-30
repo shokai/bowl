@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fishbowl (0.0.1)
+    bowl (0.0.1)
       arduino_firmata
       args_parser (> 0.1.0)
       eventmachine
@@ -63,4 +63,4 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fishbowl!
+  bowl!

@@ -1,7 +1,7 @@
 
 helpers do
   def app_name
-    "FishBowl"
+    "Bowl"
   end
 
   def app_root

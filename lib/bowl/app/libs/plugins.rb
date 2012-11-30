@@ -6,7 +6,7 @@ class Plugin
 
   def self.dirs
     @@dirs ||= [File.expand_path('../plugins', File.dirname(__FILE__)),
-                "#{ENV['HOME']}/.fishbowl/plugins"]
+                "#{ENV['HOME']}/.bowl/plugins"]
   end
 
   def self.list

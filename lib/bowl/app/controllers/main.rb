@@ -3,7 +3,7 @@ before '/*.json' do
 end
 
 before '/*' do
-  @title = 'FishBowl'
+  @title = 'Bowl'
 end
 
 get '/' do

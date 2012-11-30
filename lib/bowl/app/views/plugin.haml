@@ -31,16 +31,16 @@
     };
     var show_sample_code = function(){
       var code = [];
-      code.push('<scr'+'ipt src="#{fishbowl_js}"></scr'+'ipt>');
+      code.push('<scr'+'ipt src="#{bowl_js}"></scr'+'ipt>');
       code.push('<script type="text/javascript">');
       if(#{@plugin.get :callback}){
         code.push('  var callback = function(data){');
         code.push('    alert(data);');
         code.push('  };');
-        code.push('  fishbowl.plugin("#{@plugin.name}",'+JSON.stringify(post_data())+', callback);');
+        code.push('  bowl.plugin("#{@plugin.name}",'+JSON.stringify(post_data())+', callback);');
       }
       else{
-        code.push('  fishbowl.plugin("#{@plugin.name}",'+JSON.stringify(post_data())+');');
+        code.push('  bowl.plugin("#{@plugin.name}",'+JSON.stringify(post_data())+');');
       }
       code.push('</scr'+'ipt>');
       code = code.join("\n");
@@ -55,7 +55,7 @@
         };
       }
       $("#btn_submit").click(function(){
-        fishbowl.plugin("#{@plugin.name}", post_data(), callback);
+        bowl.plugin("#{@plugin.name}", post_data(), callback);
       });
       show_sample_code();
       $('.field').keyup(show_sample_code);

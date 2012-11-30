@@ -1,15 +1,15 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'fishbowl/version'
+require 'bowl/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "fishbowl"
-  gem.version       = Fishbowl::VERSION
+  gem.name          = "bowl"
+  gem.version       = Bowl::VERSION
   gem.authors       = ["Sho Hashimoto"]
   gem.email         = ["hashimoto@shokai.org"]
-  gem.description   = %q{FishBowl is a Mac/Linux controller for your Application.}
-  gem.summary       = %q{Write Ruby Code, put it into plug-in directory. FishBowl automatically generate sample code and Web UI.}
-  gem.homepage      = "https://github.com/shokai/fishbowl"
+  gem.description   = %q{Bowl is a Mac/Linux controller for your Application.}
+  gem.summary       = %q{Write Ruby Code, put it into plug-in directory. Bowl automatically generate sample code and Web UI.}
+  gem.homepage      = "https://github.com/shokai/bowl"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

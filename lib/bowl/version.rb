@@ -1,3 +1,3 @@
-module Fishbowl
+module Bowl
   VERSION = "0.0.1"
 end

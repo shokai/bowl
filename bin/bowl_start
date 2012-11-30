@@ -6,14 +6,14 @@ parser = ArgsParser.parse ARGV do
   arg :port, 'HTTP port', :alias => :p, :default => 8901
   arg :help, 'show help', :alias => :h
 end
+bin = $0.split('/').last
 
 if parser.has_option? :help
   STDERR.puts parser.help
-  STDERR.puts "e.g.  fishbowl start --port 8901"
+  STDERR.puts "e.g.  #{bin} --port 8901"
   exit 0
 end
 
-dir = File.expand_path '../lib/fishbowl/app', File.dirname(__FILE__)
-puts "start fishbowl - port:#{parser[:port]}"
+dir = File.expand_path '../lib/bowl/app', File.dirname(__FILE__)
+puts "start bowl =>  http://localhost:#{parser[:port]}"
 system "cd '#{dir}' && rackup config.ru -p #{parser[:port]}"
-
