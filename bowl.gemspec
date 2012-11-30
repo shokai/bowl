@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Write Ruby Code, put it into plug-in directory. Bowl automatically generate sample code and Web UI.}
   gem.homepage      = "https://github.com/shokai/bowl"
 
-  gem.files         = `git ls-files`.split($/)
+  gem.files         = `git ls-files`.split($/).reject{|i| i=="Gemfile.lock" }
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
