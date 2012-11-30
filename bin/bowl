@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
+$:.unshift File.expand_path '../lib', File.dirname(__FILE__)
 require 'rubygems'
+require 'bowl'
 require 'args_parser'
 
 parser = ArgsParser.parse ARGV do
@@ -9,7 +11,8 @@ end
 bin = $0.split('/').last
 
 if parser.has_option? :help
-  STDERR.puts "Bowl - http://github.com/shokai/bowl"
+  STDERR.puts "Bowl - Mac/Linux controller for your Application v#{Bowl::VERSION}"
+  STDERR.puts "       https://github.com/shokai/bowl"
   STDERR.puts
   STDERR.puts parser.help
   STDERR.puts

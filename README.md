@@ -11,7 +11,11 @@ Write Ruby Code, put it into plug-in directory. Bowl automatically generate samp
 
 ## Usage
 
-    % bowl_start -port 8901
+    % bowl
+
+or
+
+    % bowl --port 8901
 
 => start server - http://localhost:8901
 
